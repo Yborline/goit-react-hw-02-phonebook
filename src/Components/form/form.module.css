@@ -1,0 +1,21 @@
+.form {
+  width: 500px;
+  display: flex;
+  margin-left: 20px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.button {
+  width: 50px;
+  height: 21.5px;
+  background-color: yellowgreen;
+}
+
+.inputName {
+  background-color: rgb(226, 226, 226);
+}
+
+.inputNumber {
+  background-color: rgb(226, 226, 226);
+}

@@ -1,0 +1,21 @@
+.list {
+  margin-left: 20px;
+  padding: 0px;
+  list-style: none;
+
+  width: 380px;
+  background-color: rgb(230, 229, 227);
+}
+
+.line {
+  border: gray solid 1px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  background-color: rgb(235, 108, 108);
+  color: white;
+}
