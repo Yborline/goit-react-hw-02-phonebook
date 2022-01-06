@@ -11,6 +11,34 @@ class App extends Component {
     filter: "",
   };
 
+  // componentDidMount() {
+  //   const localstor = localStorage.getItem('phonebook')
+  //   const parsedContacts = JSON.parse(localstor)
+  //   if(parsedContacts){
+  //     this.setState({ contacts: parsedContacts });
+  //     }
+  // }
+  componentDidMount() {
+    const contacts = localStorage.getItem("phonebook");
+    if (!contacts) {
+      return;
+    }
+    const parsedContacts = JSON.parse(contacts);
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
+    // console.log("didMount", this.state.contacts);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log(prevState);
+    if (this.state.contacts !== prevState.contacts) {
+      console.log("обновилось что-оо");
+      localStorage.setItem("phonebook", JSON.stringify(this.state.contacts));
+    }
+    console.log(this.state);
+  }
+
   formSubmitHandler = (data) => {
     data.id = nanoid();
     this.state.contacts.find((contact) => contact.name === data.name)
@@ -51,8 +79,8 @@ class App extends Component {
 
     return (
       <div>
-        <Form onSubmit={this.FormSubmitHandler} value={contacts}></Form>
-        <Filter value={filter} onChange={this.ChangeFilter}></Filter>
+        <Form onSubmit={this.formSubmitHandler} value={contacts}></Form>
+        <Filter value={filter} onChange={this.changeFilter}></Filter>
         <ListForm
           onContacts={this.findContact}
           onDelete={this.deletedContact}
