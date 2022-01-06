@@ -13,8 +13,8 @@ class Form extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.value.find((contact) => contact.number === this.state.number)
-      ? alert("Такой номер уже используется")
+    this.props.value.some((contact) => contact.number === this.state.number)
+      ? alert("Такой номер уже есть ")
       : this.props.onSubmit(this.state);
     this.reset();
   };

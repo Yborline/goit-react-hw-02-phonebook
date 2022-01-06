@@ -11,14 +11,16 @@ class App extends Component {
     filter: "",
   };
 
-  FormSubmitHandler = (data) => {
+  formSubmitHandler = (data) => {
     data.id = nanoid();
-    this.setState((prevState) => ({
-      contacts: [...prevState.contacts, data],
-    }));
+    this.state.contacts.find((contact) => contact.name === data.name)
+      ? alert("Такое имя уже занято")
+      : this.setState((prevState) => ({
+          contacts: [...prevState.contacts, data],
+        }));
   };
 
-  ChangeFilter = (event) => {
+  changeFilter = (event) => {
     this.setState({
       filter: event.currentTarget.value,
     });
